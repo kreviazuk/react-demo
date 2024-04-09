@@ -1,0 +1,71 @@
+.form-container {
+  position: relative;
+}
+
+.form-container .active {
+  border: transparent;
+}
+
+.form-container label {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 64em) {
+  .form-container label {
+    font-size: 1.25rem;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 48em) {
+  .form-container label {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 20em) {
+  .form-container label {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+}
+
+.button-ok {
+  position: absolute;
+  right: 2.25rem;
+  bottom: 1.25rem;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(58, 209, 149);
+  height: 2.75rem;
+  width: 2.75rem;
+  font-family: "Quicksand", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  color: rgba(252, 252, 252, 0.8);
+}
+
+.active {
+  background-color: white;
+  border-radius: 0.75rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.warning-text-color {
+  color: rgba(251, 34, 34, 0.7);
+  font-weight: 700;
+}
+
+input.red-border.active {
+  color: rgba(251, 34, 34, 0.5);
+}

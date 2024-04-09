@@ -1,0 +1,50 @@
+.week-view-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.week-view-container {
+  width: 49.5%;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background: #74ebd5;
+  background: -webkit-linear-gradient(to right, #acb6e5, #74ebd5);
+  background: linear-gradient(to right, #acb6e5, #74ebd5);
+}
+
+.week-view-container h3 {
+  font-size: 2rem;
+}
+
+@media (max-width: 90em) {
+  .week-view-container h3 {
+    font-size: 1.25rem;
+  }
+  .week-view-container h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 62em) {
+  .week-view-container {
+    border-radius: 0;
+    padding: 1rem;
+  }
+  .week-view-container h3 {
+    font-size: 1.2rem;
+  }
+  .week-view-container h4 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 20em) {
+  .week-view-container h3 {
+    font-size: 1rem;
+  }
+
+  .week-view-container h4 {
+    font-size: 0.9rem;
+  }
+}

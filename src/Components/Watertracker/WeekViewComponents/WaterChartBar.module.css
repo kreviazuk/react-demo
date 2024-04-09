@@ -1,0 +1,82 @@
+.water-chart-bar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.water-chart-bar__inner {
+  height: 100%;
+  width: 1rem;
+  border-radius: 12px;
+  border: 0.2rem solid rgba(87, 87, 87, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.water-chart-bar__inner.active::before,
+.water-chart-bar__inner.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.25rem; /* Adjust the thickness of the arrow lines */
+  height: 1.25rem;
+  background: rgb(217, 147, 147); /* Arrow color */
+  border-radius: 1rem; /* Slightly rounded corners */
+}
+
+.water-chart-bar__inner.active::before {
+  left: 50%;
+  transform: translate(100%, -100%) rotate(45deg);
+}
+
+.water-chart-bar__inner.active::after {
+  right: 50%;
+  transform: translate(-100%, -100%) rotate(-45deg);
+}
+
+.water-chart-bar__inner.active {
+  border: 0.225rem solid rgb(217, 147, 147);
+}
+
+@media (max-width: 64em) {
+  .water-chart-bar__inner {
+    width: 0.75rem;
+    border: 0.15rem solid rgba(87, 87, 87, 0.5);
+  }
+}
+
+.water-chart-bar__fill {
+  background-color: rgba(38, 182, 185, 0.7);
+  width: 100%;
+  transition: all 0.3s ease-out;
+}
+
+.water-chart-bar__label {
+  font-weight: bold;
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.progress {
+  text-align: left;
+  width: 15rem;
+  rotate: 90deg;
+  transform: translate(0, -75%);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(87, 87, 87);
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 42em) {
+  .progress {
+    font-size: 0.75rem;
+  }
+}

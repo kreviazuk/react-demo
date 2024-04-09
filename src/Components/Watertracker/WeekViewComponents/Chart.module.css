@@ -1,0 +1,16 @@
+.day-container {
+  display: flex;
+  flex-direction: column;
+  width: 3rem;
+  height: 15rem;
+}
+
+.day {
+  height: 11rem;
+}
+
+@media (max-width: 64em) {
+  .chart-container {
+    width: 10rem;
+  }
+}

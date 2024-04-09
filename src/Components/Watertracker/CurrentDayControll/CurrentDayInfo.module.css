@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 33.3%;
+  padding: 2rem;
+}
+
+@media (max-width: 48em) {
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.img {
+  width: 5rem;
+  fill: rgb(87, 87, 87);
+}
+
+.arrows-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.time-orientation {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #212529;
+  line-height: 2rem;
+}
+
+@media (max-width: 90em) {
+  .time-orientation {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+}
