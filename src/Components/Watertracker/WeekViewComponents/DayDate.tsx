@@ -1,20 +1,20 @@
 import React from "react";
 import { convertWeek, formatedStringToDate } from "../../../Utils/timeUtils";
 import styles from "./DayDate.module.css";
-import { SingleDayWaterTrackerData } from "../../../Types/Watertracker";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
+import { SingleDayWaterTrackerData } from "../../../Types/Watertracker";
 
 interface DayDateProps {
   data: SingleDayWaterTrackerData;
 }
 
 const DayDate: React.FC<DayDateProps> = ({ data }) => {
-  const date = useSelector((state: RootState) => state.time.selectedDay.date);
+  const { selectedDay } = useSelector((state: RootState) => state.time);
   return (
     <div
       className={`${styles["single-day-info"]} ${
-        data.date === date ? styles["active"] : ""
+        data.date === selectedDay ? styles["active"] : ""
       }`}
     >
       <div className={styles["weekday"]}>{`${convertWeek(

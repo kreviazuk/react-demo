@@ -1,68 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Month from "./WeekViewComponents/Month";
 import { CurrentDayController } from "./CurrentDayControll/CurrentDayController";
 import AddNewMonth from "./AddNewMonth";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../Store/store";
+import { AppDispatch, RootState } from "../../Store/store";
 // import { dateToFormatedString } from "../../Utils/functions";
 import {
-  addMonth,
-  setSelectedMonth,
+  fetchMonthData,
+  setSelectedDay,
+  setSelectedDayAmount,
+  setSelectedDayGoal,
 } from "../../Reducers/waterTrackerTimeSlice";
-import { MonthIndex } from "../../Types/Watertracker";
+import { getDayOutOfMonth } from "../../Utils/waterTrackerUtils";
+import { dateToFormatedString } from "../../Utils/timeUtils";
 
 const WaterTracker: React.FC = () => {
-  const dispatch = useDispatch();
-  // TODO: proper time traverse
-  // const year = useSelector((state: RootState) => state.time.year.year);
-  const year = new Date().getFullYear();
-  const selectedMonth = useSelector(
-    (state: RootState) => state.time.month.monthIndex
-  );
-  const selectedMonthData = useSelector((state: RootState) => state.time.month);
-  const next = () => {
-    const nextMonth =
-      selectedMonth + 1 >= 0 && selectedMonth + 1 < 12
-        ? selectedMonth + 1
-        : selectedMonth;
-    dispatch(
-      setSelectedMonth({ year: year, monthIndex: nextMonth as MonthIndex })
-    );
-  };
+  const dispatch = useDispatch<AppDispatch>();
+  const { month } = useSelector((state: RootState) => state.time);
 
-  const prev = () => {
-    const prevMonth =
-      selectedMonth - 1 >= 0 && selectedMonth - 1 < 12
-        ? selectedMonth - 1
-        : selectedMonth;
-    console.log(prevMonth);
-    dispatch(
-      setSelectedMonth({ year: year, monthIndex: prevMonth as MonthIndex })
-    );
-  };
+  useEffect(() => {
+    dispatch(fetchMonthData())
+      .unwrap()
+      .then((res) => {
+        const day = res
+          ? getDayOutOfMonth(
+              dateToFormatedString(new Date(), "DD.MM.YYYY"),
+              res
+            )
+          : null;
+        dispatch(setSelectedDay(day ? day : null));
+        dispatch(setSelectedDayGoal(day ? day.currentGoal : null));
+        dispatch(setSelectedDayAmount(day ? day.currentAmount : null));
+      })
+      .catch((error) => {
+        // TODO: error handling
+        console.log(error);
+      });
+  }, [dispatch]);
 
-  const addNewMonthHandler = () => {
-    const monthSelcetion = {
-      year: year,
-      monthIndex: selectedMonth as MonthIndex,
-    };
-    dispatch(addMonth(monthSelcetion));
-    dispatch(setSelectedMonth(monthSelcetion));
-  };
-
-  const MonthView = <Month data={selectedMonthData} />;
-
-  const addNewMonth = (
-    <AddNewMonth
-      selectedMonth={selectedMonth as MonthIndex}
-      addNewMonth={addNewMonthHandler}
-    />
-  );
+  const monthView = month ? <Month data={month} /> : <></>;
+  const addNewMonth = <AddNewMonth />;
 
   return (
     <div className="container">
-      <CurrentDayController prev={prev} next={next} />
-      {selectedMonthData.weeks.length === 0 ? addNewMonth : MonthView}
+      <CurrentDayController />
+      {!month ? addNewMonth : monthView}
     </div>
   );
 };

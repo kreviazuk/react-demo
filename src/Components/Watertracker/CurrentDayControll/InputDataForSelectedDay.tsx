@@ -31,14 +31,11 @@ const currentGoalConf = {
 };
 
 const InputDataForCurrentDay: React.FC = () => {
-  const controlValue = useSelector(
-    (state: RootState) => state.controls.controls.controlValue
+  const { controlValue } = useSelector(
+    (state: RootState) => state.controls.controls
   );
-  const currentGoal = useSelector(
-    (state: RootState) => state.time.selectedDay.currentGoal
-  );
-  const selectedDayDateString = useSelector(
-    (state: RootState) => state.time.selectedDay.date
+  const { currentGoal, selectedDay } = useSelector(
+    (state: RootState) => state.time
   );
   const dispatch = useDispatch();
 
@@ -61,16 +58,14 @@ const InputDataForCurrentDay: React.FC = () => {
         inputConfig={controlValueConf}
         setInput={handleControlValue}
       />
-      <RangeNumberInput
-        // there was a logic mistake on selecting different days
-        // by picking the value 1000 and then typing 0000
-        // after that picking another date with the same value 1000 won't trigger any changes in useState
-        // so those zeros will stay in this input field
-        identifier={selectedDayDateString}
-        initValue={currentGoal}
-        inputConfig={currentGoalConf}
-        setInput={handleCurrentGoal}
-      />
+      {selectedDay && currentGoal && (
+        <RangeNumberInput
+          identifier={selectedDay}
+          initValue={currentGoal}
+          inputConfig={currentGoalConf}
+          setInput={handleCurrentGoal}
+        />
+      )}
     </div>
   );
 };

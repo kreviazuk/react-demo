@@ -1,10 +1,9 @@
 import {
-  singleDayWatertrackerData,
   WeekWaterTracker,
   SingleDayWaterTrackerData,
   MonthWaterTracker,
 } from "../Types/Watertracker";
-import { dateToFormatedString, getIndexOfWeekday } from "./timeUtils";
+import { dateToFormatedString } from "./timeUtils";
 
 function getAverageAmount(week: SingleDayWaterTrackerData[] | []) {
   let counter = 0;
@@ -70,35 +69,20 @@ function getWeekNumber(date: Date): number {
   return weekNumber;
 }
 
-function getSelection(date: Date, currentMonth: singleDayWatertrackerData[][]) {
-  const newSelection = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
-  const firstDayOfWeek = new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate() -
-      (date.getDay() === 0 ? date.getDay() + 6 : date.getDay() - 1)
-  );
-  const firstDayOfWeekString = `${firstDayOfWeek.getFullYear()}${firstDayOfWeek.getMonth()}${firstDayOfWeek.getDate()}`;
-  for (const i in currentMonth) {
-    const dateToCheck = currentMonth[i][0].date;
-    let stringDateToCheck = `${dateToCheck.getFullYear()}${dateToCheck.getMonth()}${dateToCheck.getDate()}`;
-    if (stringDateToCheck === firstDayOfWeekString) {
-      for (const j in currentMonth[i]) {
-        const day = currentMonth[i][j].date;
-        stringDateToCheck = `${day.getFullYear()}${day.getMonth()}${day.getDate()}`;
-        if (stringDateToCheck === newSelection) {
-          return {
-            weekIndex: parseInt(i),
-            dayIndex: parseInt(j),
-          };
-        }
+/**
+ *
+ * @param date has to be a formated string: DD.MM.YYYY
+ * @param month
+ */
+function getDayOutOfMonth(date: string, month: MonthWaterTracker) {
+  for (const week of month.weeks) {
+    for (const day of week.days) {
+      if (day.date === date) {
+        return day;
       }
     }
   }
-  return {
-    weekIndex: currentMonth.length - 1,
-    dayIndex: getIndexOfWeekday(new Date().getDay()),
-  };
+  return null;
 }
 
-export { getAverageAmount, initializeMonth, getSelection, getWeekNumber };
+export { getAverageAmount, initializeMonth, getWeekNumber, getDayOutOfMonth };

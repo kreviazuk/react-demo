@@ -1,13 +1,13 @@
 import React from "react";
-import { MonthWaterTracker } from "../../../Types/Watertracker";
 import Week from "./Week";
 import "../../GlobalStyles/global-ui.css";
+import { MonthWaterTracker } from "../../../Types/Watertracker";
 
-interface weekViewProps {
+interface MonthProps {
   data: MonthWaterTracker;
 }
 
-const Month: React.FC<weekViewProps> = ({ data }: weekViewProps) => {
+const Month: React.FC<MonthProps> = ({ data }) => {
   const weeksMapped = data.weeks.map((week) => {
     return (
       <Week

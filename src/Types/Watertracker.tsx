@@ -48,6 +48,11 @@ interface ControlsWaterTracker {
   dailyGoal: number;
 }
 
+interface WaterTrackerUpdateAmount {
+  date: string;
+  amount: number;
+}
+
 type DateFormat = "DD.MM.YYYY";
 
 type MonthIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
@@ -65,4 +70,5 @@ export type {
   ControlsWaterTracker,
   DateFormat,
   MonthIndex,
+  WaterTrackerUpdateAmount,
 };

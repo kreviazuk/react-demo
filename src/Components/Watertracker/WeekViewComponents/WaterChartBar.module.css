@@ -18,18 +18,6 @@
   justify-content: flex-end;
 }
 
-.water-chart-bar__inner.active::before,
-.water-chart-bar__inner.active::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0.25rem; /* Adjust the thickness of the arrow lines */
-  height: 1.25rem;
-  background: rgb(217, 147, 147); /* Arrow color */
-  border-radius: 1rem; /* Slightly rounded corners */
-}
-
 .water-chart-bar__inner.active::before {
   left: 50%;
   transform: translate(100%, -100%) rotate(45deg);

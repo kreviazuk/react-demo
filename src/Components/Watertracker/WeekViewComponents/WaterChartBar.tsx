@@ -4,17 +4,18 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
 import { SingleDayWaterTrackerData } from "../../../Types/Watertracker";
 
-interface ChartBarProps {
+interface WaterChartBarProps {
   data: SingleDayWaterTrackerData;
 }
 
-const WatterChartBar: React.FC<ChartBarProps> = ({ data }) => {
-  const date = useSelector((state: RootState) => state.time.selectedDay.date);
+const WaterChartBar: React.FC<WaterChartBarProps> = ({ data }) => {
+  const { selectedDay } = useSelector((state: RootState) => state.time);
+
   return (
     <div className={styles["water-chart-bar"]}>
       <div
         className={`${styles["water-chart-bar__inner"]} ${
-          date === data.date ? styles["active"] : ""
+          selectedDay === data.date ? styles["active"] : ""
         }`}
       >
         <div
@@ -31,4 +32,4 @@ const WatterChartBar: React.FC<ChartBarProps> = ({ data }) => {
   );
 };
 
-export default WatterChartBar;
+export default WaterChartBar;
