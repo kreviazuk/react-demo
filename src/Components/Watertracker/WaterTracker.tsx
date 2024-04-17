@@ -1,50 +1,104 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Month from "./WeekViewComponents/Month";
 import { CurrentDayController } from "./CurrentDayControll/CurrentDayController";
 import AddNewMonth from "./AddNewMonth";
-import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch, RootState } from "../../Store/store";
-// import { dateToFormatedString } from "../../Utils/functions";
+import { getSelection } from "../../Utils/WaterTrackerFunctions";
+import { initializeMonth } from "../../Utils/WaterTrackerFunctions";
 import {
-  fetchMonthData,
-  setSelectedDay,
-  setSelectedDayAmount,
-  setSelectedDayGoal,
-} from "../../Reducers/waterTrackerTimeSlice";
-import { getDayOutOfMonth } from "../../Utils/waterTrackerUtils";
-import { dateToFormatedString } from "../../Utils/timeUtils";
+  completeWaterTrackerData,
+  singleDayWatertrackerData,
+} from "../../Types/Watertracker";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../Store/store";
+import { dateToFormatedString } from "../../Utils/Functions";
+import { setSelectedMonth } from "../../Reducers/waterTrackerTimeSlice";
 
 const WaterTracker: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { month } = useSelector((state: RootState) => state.time);
+  const dispatch = useDispatch();
+  const selectedMonth = useSelector(
+    (state: RootState) => state.time.month.monthIndex
+  );
+  const selectedMonthData = useSelector((state: RootState) => state.time.month);
+  const next = () => {
+    const nextMonth = dateToFormatedString(
+      new Date(
+        new Date().getFullYear(),
+        selectedMonth + 1,
+        new Date().getDate()
+      ),
+      "DD.MM.YYYY"
+    );
+    dispatch(setSelectedMonth(nextMonth));
+  };
 
-  useEffect(() => {
-    dispatch(fetchMonthData())
-      .unwrap()
-      .then((res) => {
-        const day = res
-          ? getDayOutOfMonth(
-              dateToFormatedString(new Date(), "DD.MM.YYYY"),
-              res
-            )
-          : null;
-        dispatch(setSelectedDay(day ? day : null));
-        dispatch(setSelectedDayGoal(day ? day.currentGoal : null));
-        dispatch(setSelectedDayAmount(day ? day.currentAmount : null));
-      })
-      .catch((error) => {
-        // TODO: error handling
-        console.log(error);
-      });
-  }, [dispatch]);
+  const prev = () => {
+    const prevMonth = dateToFormatedString(
+      new Date(
+        new Date().getFullYear(),
+        selectedMonth - 1,
+        new Date().getDate()
+      ),
+      "DD.MM.YYYY"
+    );
+    dispatch(setSelectedMonth(prevMonth));
+  };
 
-  const monthView = month ? <Month data={month} /> : <></>;
-  const addNewMonth = <AddNewMonth />;
+  const onDecreaseHandler = (value: number) => {
+    // setCurrentMonth((prev: singleDayWatertrackerData[][]) => {
+    //   prev[selectedDay.weekIndex][selectedDay.dayIndex].currentAmount -= value;
+    //   return [...prev];
+    // });
+  };
+
+  const onIncreaseHandler = (value: number) => {
+    // setCurrentMonth((prev: singleDayWatertrackerData[][]) => {
+    //   prev[selectedDay.weekIndex][selectedDay.dayIndex].currentAmount += value;
+    //   return [...prev];
+    // });
+  };
+
+  //TODO: update this function so each day can be updated as a single unit
+  const onUpdateDailyAmount = (value: number) => {
+    // setCurrentMonth((prev: singleDayWatertrackerData[][]) => {
+    //   prev[selectedDay.weekIndex][selectedDay.dayIndex].currentGoal = value;
+    //   return [...prev];
+    // });
+  };
+
+  const setSelectedHadler = (date: Date) => {
+    // setSelectedDay(getSelection(date, currentMonth));
+  };
+
+  //TODO: add new month on a button click
+  // const addNewMonthHandler = () => {
+  //   console.log(initializeMonth(selectedMonth));
+  // };
+
+  console.log("currentMonth", selectedMonthData);
+
+  const MonthView = (
+    <Month data={selectedMonthData} setSelected={setSelectedHadler} />
+  );
+
+  // const addNewMonth = (
+  //   <AddNewMonth
+  //     selectedMonth={selectedMonth}
+  //     addNewMonth={addNewMonthHandler}
+  //   />
+  // );
 
   return (
     <div className="container">
-      <CurrentDayController />
-      {!month ? addNewMonth : monthView}
+      <CurrentDayController
+        onDecrease={onDecreaseHandler}
+        onIncrease={onIncreaseHandler}
+        prev={prev}
+        next={next}
+      />
+      {MonthView}
+      {/* {isCurrentDateEmpty(completeWaterTrackerData.data, selectedMonth)
+        ? addNewMonth
+        : MonthView} */}
     </div>
   );
 };

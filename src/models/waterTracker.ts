@@ -2,22 +2,20 @@ import {
   ControlsWaterTracker,
   MonthWaterTracker,
   SingleDayWaterTrackerData,
-  YearWaterTracker,
 } from "../Types/Watertracker";
-import { dateToFormatedString } from "../Utils/timeUtils";
-import { dummyYear } from "./yearData";
+import { dateToFormatedString } from "../Utils/Functions";
+import { initializeMonth } from "../Utils/WaterTrackerFunctions";
 
 export default class WaterTrackerModel {
   controls: ControlsWaterTracker;
   month: MonthWaterTracker;
-  year: YearWaterTracker;
   selectedDay: SingleDayWaterTrackerData;
   constructor() {
-    this.year = dummyYear;
-    this.month = this.initSelectedMonth();
+    this.month = initializeMonth();
     this.controls = {
       controlValue: 100,
       dailyGoal: 1000,
+      selectedDay: dateToFormatedString(new Date(), "DD.MM.YYYY"),
     };
     this.selectedDay = {
       date: dateToFormatedString(new Date(), "DD.MM.YYYY"),
@@ -25,14 +23,6 @@ export default class WaterTrackerModel {
       currentAmount: 0,
     };
   }
-
-  // TODO: fetch fucntion which gets data month after month
-  initSelectedMonth() {
-    return dummyYear.months[new Date().getMonth()];
-  }
-
-  // TODO: init empty year so months on traverse can be added without sending too many requests
-  initEmptyYear(year: number) {}
 }
 
 export const dummyCentralDataSrc = new WaterTrackerModel();

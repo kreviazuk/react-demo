@@ -1,35 +1,33 @@
 import React from "react";
 import styles from "./WaterChartBar.module.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../Store/store";
-import { SingleDayWaterTrackerData } from "../../../Types/Watertracker";
 
-interface WaterChartBarProps {
-  data: SingleDayWaterTrackerData;
+interface ChartBarProps {
+  chartBarData: {
+    currentGoal: number;
+    currentAmount: number;
+  };
 }
 
-const WaterChartBar: React.FC<WaterChartBarProps> = ({ data }) => {
-  const { selectedDay } = useSelector((state: RootState) => state.time);
-
+const WatterChartBar = (props: ChartBarProps) => {
   return (
     <div className={styles["water-chart-bar"]}>
-      <div
-        className={`${styles["water-chart-bar__inner"]} ${
-          selectedDay === data.date ? styles["active"] : ""
-        }`}
-      >
+      <div className={styles["water-chart-bar__inner"]}>
         <div
           className={styles["water-chart-bar__fill"]}
           style={{
-            height: `${(data.currentAmount / data.currentGoal) * 100}%`,
+            height: `${
+              (props.chartBarData.currentAmount /
+                props.chartBarData.currentGoal) *
+              100
+            }%`,
           }}
         ></div>
       </div>
       <div
         className={styles["progress"]}
-      >{`${data.currentAmount}/${data.currentGoal}`}</div>
+      >{`${props.chartBarData.currentAmount}/${props.chartBarData.currentGoal}`}</div>
     </div>
   );
 };
 
-export default WaterChartBar;
+export default WatterChartBar;

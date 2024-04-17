@@ -1,77 +1,37 @@
-import React from "react";
-// import ToggleButton from "../../UI/ToggleButton";
+import React, { useState } from "react";
+import ToggleButton from "../../UI/ToggleButton";
 import ArrowButton from "../../UI/ArrowButton";
+import { singleDayWatertrackerData } from "../../../Types/Watertracker";
 import classes from "./CurrentDayInfo.module.css";
 import "../../GlobalStyles/global-ui.css";
-import { useDispatch } from "react-redux";
-import {
-  traverseToNextMonth,
-  traverseToNextYear,
-  traverseToPreviousMonth,
-  traverseToPreviousYear,
-} from "../../../Reducers/waterTrackerTimeSlice";
 
-export const CurrentDayInfo: React.FC = () => {
-  const dispatch = useDispatch();
+interface CurrentDayInfoProps {
+  prev: () => void;
+  next: () => void;
+}
+
+export const CurrentDayInfo: React.FC<CurrentDayInfoProps> = ({
+  prev,
+  next,
+}) => {
   const widthInPX = 150;
-
-  // TODO: make the switch work
-  // const amountGoalSwitch = (
-  //   <ToggleButton firstOption="amount" secondOption="goal" />
-  // );
-
-  // TODO: make the switch work
-  // const monthWeekSwitch = (
-  //   <ToggleButton firstOption="month" secondOption="week" />
-  // );
-
-  const setPreviousYear = () => {
-    dispatch(traverseToPreviousYear());
-  };
-
-  const setNextYear = () => {
-    dispatch(traverseToNextYear());
-  };
-
-  const setPreviousMonth = () => {
-    dispatch(traverseToPreviousMonth());
-  };
-
-  const setNextMonth = () => {
-    dispatch(traverseToNextMonth());
-  };
-
   return (
     <div className={`${classes.container} watertracker_day-controls-item`}>
+      <ToggleButton firstOption="amount" secondOption="goal" />
+      <ToggleButton firstOption="month" secondOption="week" />
       <div className={classes["arrows-wrapper"]}>
         <ArrowButton
           description={"prev"}
           left={true}
           width={widthInPX}
-          clickHandler={setPreviousYear}
-        />
-        <div className={classes["time-orientation"]}>year</div>
-        <ArrowButton
-          description={"next"}
-          left={false}
-          width={widthInPX}
-          clickHandler={setNextYear}
-        />
-      </div>
-
-      <div className={classes["arrows-wrapper"]}>
-        <ArrowButton
-          description={"prev"}
-          left={true}
-          width={widthInPX}
-          clickHandler={setPreviousMonth}
+          clickHandler={prev}
         />
         <div className={classes["time-orientation"]}>month</div>
         <ArrowButton
           description={"next"}
           left={false}
           width={widthInPX}
-          clickHandler={setNextMonth}
+          clickHandler={next}
         />
       </div>
     </div>

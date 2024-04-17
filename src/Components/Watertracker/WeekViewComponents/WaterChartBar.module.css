@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 10;
 }
 
 .water-chart-bar__inner {
@@ -16,20 +15,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-.water-chart-bar__inner.active::before {
-  left: 50%;
-  transform: translate(100%, -100%) rotate(45deg);
-}
-
-.water-chart-bar__inner.active::after {
-  right: 50%;
-  transform: translate(-100%, -100%) rotate(-45deg);
-}
-
-.water-chart-bar__inner.active {
-  border: 0.225rem solid rgb(217, 147, 147);
 }
 
 @media (max-width: 64em) {

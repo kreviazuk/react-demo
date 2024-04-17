@@ -7,7 +7,6 @@ interface ControlsState {
 }
 
 const initialState: ControlsState = {
-  //TODO: get rid of dummy data
   controls: dummyCentralDataSrc.controls,
 };
 
@@ -21,8 +20,12 @@ const controlsSlice = createSlice({
     setControlValue: (state, action: PayloadAction<number>) => {
       state.controls.controlValue = action.payload;
     },
+    setDateToControl: (state, action: PayloadAction<string>) => {
+      state.controls.selectedDay = action.payload;
+    },
   },
 });
 
-export const { setDailyGoal, setControlValue } = controlsSlice.actions;
+export const { setDailyGoal, setControlValue, setDateToControl } =
+  controlsSlice.actions;
 export default controlsSlice;

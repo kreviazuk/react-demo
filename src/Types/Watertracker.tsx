@@ -29,12 +29,12 @@ interface YearWaterTracker {
 
 interface MonthWaterTracker {
   monthIndex: number;
-  weeks: Array<WeekWaterTracker>;
+  weeks: Array<WeekWaterTracker> | [];
 }
 
 interface WeekWaterTracker {
   weekIndex: number;
-  days: Array<SingleDayWaterTrackerData>;
+  days: Array<SingleDayWaterTrackerData> | [];
 }
 
 interface SingleDayWaterTrackerData {
@@ -46,16 +46,10 @@ interface SingleDayWaterTrackerData {
 interface ControlsWaterTracker {
   controlValue: number;
   dailyGoal: number;
-}
-
-interface WaterTrackerUpdateAmount {
-  date: string;
-  amount: number;
+  selectedDay: string;
 }
 
 type DateFormat = "DD.MM.YYYY";
-
-type MonthIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 export type {
   singleDayWatertrackerData,
@@ -69,6 +63,4 @@ export type {
   WeekWaterTracker,
   ControlsWaterTracker,
   DateFormat,
-  MonthIndex,
-  WaterTrackerUpdateAmount,
 };

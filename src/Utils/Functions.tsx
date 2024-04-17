@@ -85,8 +85,9 @@ function getCurrentDay(
 }
 
 function validateRange(input: number, max: number, min: number) {
-  if (input <= max && input >= min) return true;
-  return false;
+  const num = Number(input);
+  if (num > max || num < min) return false;
+  return true;
 }
 
 function getNumberOfWeek(date: Date) {
@@ -94,7 +95,7 @@ function getNumberOfWeek(date: Date) {
   const days = Math.floor(
     (date.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
   );
-  return Math.ceil(days / 7) + 1;
+  return Math.ceil(days / 7);
 }
 
 function dateToFormatedString(date: Date, formatValue: DateFormat) {

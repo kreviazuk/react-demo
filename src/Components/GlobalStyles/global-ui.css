@@ -21,12 +21,6 @@
   }
 }
 
-@media (max-width: 48em) {
-  .view-container {
-    padding: 0.75rem;
-  }
-}
-
 .form-group {
   display: flex;
   flex-direction: column;

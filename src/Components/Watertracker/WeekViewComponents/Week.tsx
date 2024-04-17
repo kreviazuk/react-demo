@@ -4,19 +4,20 @@ import {
   SingleDayWaterTrackerData,
 } from "../../../Types/Watertracker";
 import Day from "./Day";
-import { getAverageAmount } from "../../../Utils/waterTrackerUtils";
+import { getAverageAmount } from "../../../Utils/WaterTrackerFunctions";
 import {
   convertFullMonth,
   formatedStringToDate,
   getNumberOfWeek,
-} from "../../../Utils/timeUtils";
+} from "../../../Utils/Functions";
 import styles from "./Week.module.css";
 
 interface WeekProps {
   week: WeekWaterTracker;
+  setSelected: (date: Date) => void;
 }
 
-const Week: React.FC<WeekProps> = ({ week }) => {
+const Week: React.FC<WeekProps> = ({ week, setSelected }) => {
   const first = formatedStringToDate(week.days[0].date, "DD.MM.YYYY");
   const last = formatedStringToDate(week.days[6].date, "DD.MM.YYYY");
   const prevMonth = `${convertFullMonth(first.getMonth())}`;

@@ -1,20 +1,23 @@
 import React from "react";
+import { MonthWaterTracker } from "../../../Types/Watertracker";
 import Week from "./Week";
 import "../../GlobalStyles/global-ui.css";
-import { MonthWaterTracker } from "../../../Types/Watertracker";
 
-interface MonthProps {
+interface weekViewProps {
   data: MonthWaterTracker;
+  setSelected: (date: Date) => void;
 }
 
-const Month: React.FC<MonthProps> = ({ data }) => {
+const Month: React.FC<weekViewProps> = ({
+  data,
+  setSelected,
+}: weekViewProps) => {
   const weeksMapped = data.weeks.map((week) => {
     return (
       <Week
-        key={`week_${week.weekIndex}_${week.days[0].date}_${
-          week.days[week.days.length - 1].date
-        }`}
+        key={`week_${week.weekIndex}`}
         week={week}
+        setSelected={setSelected}
       />
     );
   });
