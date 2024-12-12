@@ -1,0 +1,30 @@
+/* 全局样式 */
+page {
+  background-color: #f8f8f8;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+}
+
+/* 字体相关 */
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 600; }
+
+/* 颜色相关 */
+.text-primary { color: #2979ff; }
+.text-secondary { color: #666; }
+
+/* 布局相关 */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* 间距相关 */
+.mt-2 { margin-top: 20rpx; }
+.mb-2 { margin-bottom: 20rpx; }
+.p-2 { padding: 20rpx; }
+
+/* 圆角阴影 */
+.rounded { border-radius: 12rpx; }
+.shadow { box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04); }

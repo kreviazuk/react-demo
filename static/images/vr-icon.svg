@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="58" stroke="white" stroke-width="4"/>
+  <path d="M30 45H90V75H30V45Z" stroke="white" stroke-width="4"/>
+  <path d="M45 60C45 63.3137 42.3137 66 39 66C35.6863 66 33 63.3137 33 60C33 56.6863 35.6863 54 39 54C42.3137 54 45 56.6863 45 60Z" fill="white"/>
+  <path d="M87 60C87 63.3137 84.3137 66 81 66C77.6863 66 75 63.3137 75 60C75 56.6863 77.6863 54 81 54C84.3137 54 87 56.6863 87 60Z" fill="white"/>
+</svg>

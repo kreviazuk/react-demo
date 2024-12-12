@@ -1,0 +1,155 @@
+{
+  "pages": [{
+    "path": "pages/index/index",
+    "style": {
+      "navigationBarTitleText": "托育问答"
+    }
+  }, {
+    "path": "pages/care/care",
+    "style": {
+      "navigationBarTitleText": "放心托育"
+    }
+  }, {
+    "path": "pages/mine/mine",
+    "style": {
+      "navigationBarTitleText": "我的"
+    }
+  }, {
+    "path": "pages/bantuo/index",
+    "style": {
+      "navigationBarTitleText": "办托"
+    }
+  }, {
+    "path": "pages/jiayuan/index",
+    "style": {
+      "navigationBarTitleText": "家园共育",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/rutuo/rutuo",
+    "style": {
+      "navigationBarTitleText": "我要入托"
+    }
+  }, {
+    "path": "pages/rutuo/yuyue",
+    "style": {
+      "navigationBarTitleText": "我要入托"
+    }
+  }, {
+    "path": "pages/rutuo/rutuoform",
+    "style": {
+      "navigationBarTitleText": "我要入托"
+    }
+  }, {
+    "path": "pages/tijianform/index",
+    "style": {
+      "navigationBarTitleText": "入托体检预约"
+    }
+  }, {
+    "path": "pages/shipu/index",
+    "style": {
+      "navigationBarTitleText": "机构食谱",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/jiantuo/index",
+    "style": {
+      "navigationBarTitleText": "一键建托",
+      "enablePullDownRefresh": false,
+      "permission": {
+        "scope.userLocation": {
+          "desc": "你的位置信息将用于地图展示"
+        }
+      }
+    }
+  }, {
+    "path": "pages/vr/index",
+    "style": {
+      "navigationBarTitleText": "VR云看托",
+      "navigationStyle": "default"
+    }
+  }, {
+    "path": "pages/yangyu/index",
+    "style": {
+      "navigationBarTitleText": "养育照护活动",
+      "enablePullDownRefresh": true
+    }
+  }, {
+    "path": "pages/yangyu/detail",
+    "style": {
+      "navigationBarTitleText": "活动详情"
+    }
+  }, {
+    "path": "pages/zixun/index",
+    "style": {
+      "navigationBarTitleText": "养育资讯"
+    }
+  }, {
+    "path": "pages/zhaohu/index",
+    "style": {
+      "navigationBarTitleText": "照护人才"
+    }
+  }, {
+    "path": "pages/zhaohu/staff-detail",
+    "style": {
+      "navigationBarTitleText": "人员详情"
+    }
+  }, {
+    "path": "pages/jianguan/index",
+    "style": {
+      "navigationBarTitleText": "机构监管信息"
+    }
+  }, {
+    "path": "pages/jianguan/detail",
+    "style": {
+      "navigationBarTitleText": "处罚详情"
+    }
+  }, {
+    "path": "pages/peixun/index",
+    "style": {
+      "navigationBarTitleText": "人才培训"
+    }
+  }],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "托育问答",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "rpxCalcMaxDeviceWidth": 960,
+    "rpxCalcBaseDeviceWidth": 375,
+    "rpxCalcIncludeWidth": 750
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2979ff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "height": "50px",
+    "fontSize": "10px",
+    "iconWidth": "24px",
+    "spacing": "3px",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "/static/images/tabbar/home.png",
+      "selectedIconPath": "/static/images/tabbar/home-active.png",
+      "text": "托育问答"
+    }, {
+      "pagePath": "pages/care/care",
+      "iconPath": "/static/images/tabbar/education.png",
+      "selectedIconPath": "/static/images/tabbar/education-active.png",
+      "text": "放心托育"
+    }, {
+      "pagePath": "pages/mine/mine",
+      "iconPath": "/static/images/tabbar/mine.png",
+      "selectedIconPath": "/static/images/tabbar/mine-active.png",
+      "text": "我的"
+    }]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue",
+      "^qiun-data-charts": "@qiun/ucharts"
+    }
+  }
+}
