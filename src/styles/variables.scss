@@ -1,0 +1,44 @@
+// 主要颜色
+$primary-color: #2979ff;    // 主题蓝色，用于主按钮、链接等
+$warning-color: #ff6b6b;    // 警告红色，用于错误提示、删除按钮等
+$success-color: #52c41a;    // 成功绿色，用于成功提示、完成状态等
+$error-color: #ff4d4f;      // 错误红色，用于错误状态、失败提示等
+
+// 文字颜色
+$text-color: #333;          // 主要文字，用于标题、重要文本
+$text-color-secondary: #666; // 次要文字，用于普通文本
+$text-color-light: #999;    // 浅色文字，用于提示、说明文本
+
+// 边框和背景
+$border-color: #f5f5f5;     // 边框颜色，用于分割线、边框
+$background-color: #f5f5f5; // 背景色，用于页面背景
+
+// 字体大小
+$font-size-small: 24rpx;    // 小字体，用于辅助文本、标签
+$font-size-base: 28rpx;     // 基础字体，用于普通文本
+$font-size-large: 32rpx;    // 大字体，用于标题、重要文本
+$font-size-xlarge: 36rpx;   // 特大字体，用于主标题
+
+// 间距（从小到大递增）
+$spacing-mini: 4rpx;        // 最小间距，用于紧凑元素
+$spacing-small: 8rpx;       // 小间距，用于相关元素
+$spacing-base: 12rpx;       // 基础间距，用于一般元素
+$spacing-large: 16rpx;      // 大间距，用于分组元素
+$spacing-xlarge: 20rpx;     // 特大间距，用于板块分隔
+$spacing-xxlarge: 24rpx;    // 超大间距，用于主要分隔
+$spacing-huge: 30rpx;       // 巨大间距，用于页面分隔
+
+// 圆角
+$border-radius-small: 4rpx;  // 小圆角，用于标签、小按钮
+$border-radius-base: 8rpx;   // 基础圆角，用于卡片、按钮
+$border-radius-large: 12rpx; // 大圆角，用于模态框、大卡片
+$border-radius-circle: 50%;  // 圆形，用于头像、徽标
+
+// 阴影
+$box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04); // 基础阴影，用于卡片、弹出层
+
+// 布局尺寸
+$max-content-width: 960rpx;  // 最大内容宽度，用于页面主体
+$header-height: 88rpx;       // 头部高度
+$tab-height: 80rpx;         // 标签页高度
+$search-bar-height: 72rpx;  // 搜索栏高度 

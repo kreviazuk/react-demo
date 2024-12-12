@@ -98,6 +98,10 @@ const goToDetail = (org: Organization) => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+@import '@/styles/layout.scss';
+
 .container {
   min-height: 100vh;
   background: #f5f5f5;
@@ -149,47 +153,45 @@ const goToDetail = (org: Organization) => {
     .org-image {
       width: 160rpx;
       height: 160rpx;
-      border-radius: 8rpx;
+      border-radius: $border-radius-base;
       flex-shrink: 0;
     }
 
     .org-content {
       flex: 1;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       justify-content: space-between;
       min-width: 0;
 
       .org-name {
-        font-size: 32rpx;
-        color: #333;
+        font-size: $font-size-large;
+        color: $text-color;
         font-weight: 500;
-        margin-bottom: 20rpx;
+        @include text-ellipsis;
+        margin-bottom: $spacing-xlarge;
       }
 
       .org-info {
-        display: flex;
-        flex-direction: column;
-        gap: 12rpx;
+        @include flex-column;
+        gap: $spacing-base;
 
         .time {
-          font-size: 28rpx;
-          color: #999;
+          font-size: $font-size-base;
+          color: $text-color-light;
         }
 
         .count {
-          display: flex;
-          align-items: center;
-          gap: 8rpx;
+          @include flex-center;
+          gap: $spacing-small;
 
           .label {
-            font-size: 28rpx;
-            color: #999;
+            font-size: $font-size-base;
+            color: $text-color-light;
           }
 
           .value {
-            font-size: 28rpx;
-            color: #ff6b6b;
+            font-size: $font-size-base;
+            color: $warning-color;
           }
         }
       }

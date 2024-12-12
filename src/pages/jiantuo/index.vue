@@ -340,7 +340,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/common/styles/layout.scss';
+@import '@/styles/layout.scss';
 
 .page-container {
   width: 100%;
